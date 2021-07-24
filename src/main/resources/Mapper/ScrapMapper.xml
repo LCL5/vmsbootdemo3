@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.vmsbootdemo3.mapper.ScrapMapper">
+
+    <!--查询报废车辆信息-->
+    <select id="getAllScrap" resultType="com.example.vmsbootdemo3.bean.Scrap">
+        SELECT * FROM scrap ;
+    </select>
+    <!--删除报废车辆信息-->
+    <delete id="DeleteScrap" parameterType="String">
+        DELETE FROM scrap WHERE Number = #{Number};
+    </delete>
+    <!--修改-->
+    <update id="updateScrap" parameterType="com.example.vmsbootdemo3.bean.Scrap">
+        UPDATE scrap
+        SET CarNumber = #{CarNumber},
+            CarName = #{CarName},
+            CarModel = #{CarModel},
+            ScrapDate = #{ScrapDate},
+            State = #{State}
+        WHERE Number = #{Number};
+    </update>
+    <!--插入-->
+    <insert id="AddScrap" parameterType="com.example.vmsbootdemo3.bean.Scrap">
+        INSERT INTO scrap (Number,CarNumber,CarName,CarModel,ScrapDate,State)
+        values (#{Number},#{CarNumber},#{CarName},#{CarModel},#{ScrapDate},#{State});
+    </insert>
+    <!--根据Number查询-->
+    <select id="FindScrap" parameterType="String" resultType="com.example.vmsbootdemo3.bean.Scrap">
+        SELECT * FROM scrap
+        WHERE Number = #{Number};
+    </select>
+</mapper>

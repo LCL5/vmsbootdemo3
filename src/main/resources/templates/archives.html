@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>archives</title>
+    <!--Bootstrap4 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!--用于弹窗、提示、下拉菜单 -->
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <!--Bootstrap4 核心 JavaScript 文件 -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <h1 align="center">车辆档案列表</h1>
+    <table border="1">
+        <tr>
+            <th>编号</th>
+            <th>车牌号</th>
+            <th>车辆名称</th>
+            <th>型号</th>
+            <th>品牌</th>
+            <th>采购日期</th>
+            <th>价格</th>
+            <th>操作</th>
+        </tr>
+        <tr th:each="archives,archivesStat : ${archivesList}">
+            <td th:text="${archives.Number}"></td>
+            <td th:text="${archives.CarNumber}"></td>
+            <td th:text="${archives.CarName}"></td>
+            <td th:text="${archives.CarModel}"></td>
+            <td th:text="${archives.CarBrand}"></td>
+            <td th:text="${archives.PurchaseDate}"></td>
+            <td th:text="${archives.CarPrice}"></td>
+            <td>
+                <a th:href = "@{/deleteArchives+{Number}(Number=${archives.Number})}" id = "delete">删除</a>
+                <a th:href = "@{/archives+{Number}(Number=${archives.Number})}">修改</a>
+            </td>
+        </tr>
+    </table>
+
+        <button id = "add">增加档案</button>
+        <button id = "update">刷新</button>
+        <button id = "scrap">查看报废车辆档案</button>
+        <button onclick="getinput()" id = "find" >查找</button>
+        <input type="text" id="input"/>
+    <script>
+        $("#update").click(function () {
+            location.href = "archives";
+        });
+        $("#add").click(function () {
+            location.href = "archives.to";
+        });
+        $("#scrap").click(function () {
+            location.href = "archives.do";
+        });
+        function getinput() {
+            res=$("#input").val();
+            alert("正在搜索关键字："+res+"的档案");
+            location.href = "@{/archivess+{Number}}";
+        }
+    </script>
+
+</body>
+</html>
