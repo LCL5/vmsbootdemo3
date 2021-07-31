@@ -4,7 +4,6 @@ import com.example.vmsbootdemo3.bean.Archives;
 import com.example.vmsbootdemo3.service.ArchivesService;
 import org.springframework.beans.factory.annotation.Autowired;;
 import org.springframework.stereotype.Controller;
-
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
@@ -75,16 +74,9 @@ public class ArchivesController {
         modelMap.addAttribute("archivesList",archivesList);
         return "modifyArchives";
     }
-    @RequestMapping(value="/archives.do",method=RequestMethod.GET)
+    @RequestMapping(value="/scrap",method=RequestMethod.GET)
     public String ToScrap(){
         return "scrap";
-    }
-    //模糊查询
-    @RequestMapping("/archivess+{Number}")
-    public String SearchArchives(@PathVariable("Number") String Number,ModelMap modelMap){
-        Archives archivesList = archivesService.FindArchives(Number);
-        modelMap.addAttribute("archivesList",archivesList);
-        return "searchArchives";
     }
 }
 

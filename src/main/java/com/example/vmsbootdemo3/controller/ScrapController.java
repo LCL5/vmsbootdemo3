@@ -2,12 +2,10 @@ package com.example.vmsbootdemo3.controller;
 
 import com.example.vmsbootdemo3.bean.Scrap;
 import com.example.vmsbootdemo3.service.ScrapService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -19,10 +17,11 @@ public class ScrapController {
     ScrapService scrapService;
 
     /*查询所有报废车辆*/
-    @RequestMapping("/Scrap")
-    public String ViewScarp(ModelMap Map) {
-        List<Scrap> scrapList = scrapService.queryAllScrap();
-        Map.addAttribute("scrapList", scrapList);
+    @RequestMapping("/scrap")
+    @ResponseBody
+    public String  ViewScrap(ModelMap Map) {
+        List<Scrap> scrap = scrapService.queryAllScrap();
+        Map.addAttribute("scrapList", scrap);
         return "scrap";
     }
 
@@ -39,6 +38,10 @@ public class ScrapController {
         }
     }
     /*增加*/
+    @RequestMapping(value="/scrap.to",method=RequestMethod.GET)
+    public String addScrap(){
+        return "addScrap";
+    }
     @RequestMapping("/addScrap")
     @ResponseBody
     public Map AddScrap(Scrap scrap){

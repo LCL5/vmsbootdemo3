@@ -15,6 +15,4 @@ public interface ArchivesMapper {
     int updateArchives(Archives archives);
     //插入车辆档案
     int AddArchives(Archives archives);
-    //查询
-    Archives getArchivesByNumber(String Number);
 }

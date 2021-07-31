@@ -55,4 +55,16 @@ public class Scrap {
     public void setState(String state) {
         State = state;
     }
+
+    @Override
+    public String toString() {
+        return "Scrap{" +
+                "Number='" + Number + '\'' +
+                ", CarNumber='" + CarNumber + '\'' +
+                ", CarName='" + CarName + '\'' +
+                ", CarModel='" + CarModel + '\'' +
+                ", ScrapDate='" + ScrapDate + '\'' +
+                ", State='" + State + '\'' +
+                '}';
+    }
 }

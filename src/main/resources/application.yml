@@ -13,6 +13,10 @@ mybatis:
   type-aliases-package: com.example.vmsbootdemo3.bean
   mapper-locations: classpath:Mapper/*.xml
 
+spring.thymeleaf.content-type: text/html
+spring.thymeleaf.cache: false
+spring.thymeleaf.mode: LEGACYHTML5
+
 #分页pageHelper
 pagehelper:
   helperDialect: mysql
